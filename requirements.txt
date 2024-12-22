@@ -1,0 +1,14 @@
+streamlit
+streamlit-option-menu
+pillow
+streamlit-shadcn-ui
+opencv-python
+numpy
+matplotlib
+scikit-learn
+pandas
+requests
+altair
+datetime
+joblib
+streamlit-lottie
