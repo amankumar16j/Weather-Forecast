@@ -1,0 +1,13 @@
+prefix=D:/ayushiproject/Facial-Emotion-Recognition-using-OpenCV-and-Deepface/myenv/Library
+exec_prefix=D:/ayushiproject/Facial-Emotion-Recognition-using-OpenCV-and-Deepface/myenv/Library
+libdir=D:/ayushiproject/Facial-Emotion-Recognition-using-OpenCV-and-Deepface/myenv/Library/lib
+sharedlibdir=D:/ayushiproject/Facial-Emotion-Recognition-using-OpenCV-and-Deepface/myenv/Library/lib
+includedir=D:/ayushiproject/Facial-Emotion-Recognition-using-OpenCV-and-Deepface/myenv/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
