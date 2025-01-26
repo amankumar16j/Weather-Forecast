@@ -17,8 +17,16 @@ import joblib
 from streamlit_lottie import st_lottie
 from datetime import datetime
 import os
+from streamlit_js_eval import streamlit_js_eval, get_geolocation
+
 
 st.set_page_config(layout="wide")
+
+loc = get_geolocation()
+
+lat=loc['coords']['latitude']
+lon=loc['coords']['longitude']
+
 
 api_key = "75f5259e5f36234789875b400c78db3b"
 
@@ -88,7 +96,7 @@ with col3[1]:
 with st.container(border=True):
     
     label="City Name"
-    options=["Jalandhar","Bhopal","Indore","Delhi","Uttar Pradesh","Tamil Nadu"]
+    options=["Your Location","Jalandhar","Bhopal","Indore","Delhi","Uttar Pradesh","Tamil Nadu"]
     city = st.selectbox(label, options, index=0, key=None, help=None, on_change=None, args=None, kwargs=None)
 
     st.header(city)    
@@ -98,7 +106,12 @@ with st.container(border=True):
     # Load data according to city info----------------------------
     days = 7
     # city = "Jalandhar"
-    lat, lon = get_lat_lon(city, api_key)
+    if(city=="Your Location"):
+        lat=loc['coords']['latitude']
+        lon=loc['coords']['longitude']
+    else:
+        lat, lon = get_lat_lon(city, api_key)
+        
     if lat is not None and lon is not None:
         pass
     else:
@@ -173,7 +186,8 @@ with st.container(border=True):
         value=10,  # Default value
         step=1  # Step size
         )
-        lat, lon = get_lat_lon(city, api_key)
+        
+        # lat, lon = get_lat_lon(city, api_key)
         if lat is not None and lon is not None: 
             pass
         else:
