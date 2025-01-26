@@ -22,10 +22,10 @@ from streamlit_js_eval import streamlit_js_eval, get_geolocation
 
 st.set_page_config(layout="wide")
 
-loc = get_geolocation()
+# loc = get_geolocation()
 
-lat=loc['coords']['latitude']
-lon=loc['coords']['longitude']
+# lat=loc['coords']['latitude']
+# lon=loc['coords']['longitude']
 
 
 api_key = "75f5259e5f36234789875b400c78db3b"
@@ -107,8 +107,15 @@ with st.container(border=True):
     days = 7
     # city = "Jalandhar"
     if(city=="Your Location"):
-        lat=loc['coords']['latitude']
-        lon=loc['coords']['longitude']
+        loc = get_geolocation()
+        lat=1
+        lon=1
+
+        if loc is not None and 'coords' in loc:
+            lat = loc['coords']['latitude']
+            lon = loc['coords']['longitude']
+        else:
+            st.error("Geolocation data could not be retrieved. Please Give Access To Your Location Or Try Using Option Menu")
     else:
         lat, lon = get_lat_lon(city, api_key)
         
